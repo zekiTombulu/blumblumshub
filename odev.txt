@@ -159,13 +159,14 @@ public class arayuz extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         try {
-            long firstPrime = Long.parseLong(jTextField1.getText());
-            long secondPrime = Long.parseLong(jTextField2.getText());
-            long anyNumber = Long.parseLong(jTextField3.getText());
-            long base = firstPrime * secondPrime;
-            long x0 = ((anyNumber * anyNumber) % base);
-            long x2 = ((x0 * x0) % base);
-            String rastgalems = String.valueOf(x2);
+           BigInteger firstPrime = new BigInteger(jTextField1.getText());
+            BigInteger secondPrime = new BigInteger(jTextField2.getText());
+            BigInteger anyNumber = new BigInteger(jTextField2.getText());
+            BigInteger base = firstPrime.multiply(secondPrime);
+            BigInteger x00 = anyNumber.multiply(anyNumber);
+            BigInteger x01 = x00.mod(base);
+            BigInteger x10 = (x01.multiply(x01)).mod(base);
+            String rastgalems = String.valueOf(x10);
             jTextField4.setText(rastgalems);
 
         } catch (Exception e) {
